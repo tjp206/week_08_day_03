@@ -2,7 +2,8 @@
     <div class="booking">
         <h2>Guest Name: {{ booking.name }}</h2>
         <h3>Email: {{ booking.email }}</h3>
-        <h3>Checked In: {{ booking.status }}</h3>
+        <button v-if="!booking.status" v-on:click="updateBooking" >Checked In: {{ booking.status }}</button>
+        <p v-if="booking.status"><b>Checked In</b></p>
 
         <button type="button" v-on:click="deleteBooking">Delete Booking</button>
     </div>
@@ -19,9 +20,16 @@ export default {
         deleteBooking() {
             BookingsService.deleteBooking(this.booking._id)
             .then(() => eventBus.$emit('booking-deleted', this.booking._id))
+        },
+        updateBooking() {
+            let updatedStatus = {
+                status: true
+            }
+            BookingsService.updateBooking(updatedStatus, this.booking._id)
+            .then(() => eventBus.$emit('booking-updated', this.booking._id))
+    
         }
-    }
-
+    },
 }
 </script>
 

@@ -33,10 +33,14 @@ export default {
 	  this.bookings.push(booking)
 		}),
 
-
     eventBus.$on('booking-deleted', (id) => {
 		  let index = this.bookings.findIndex(booking => booking._id === id)
 		  this.bookings.splice(index, 1)
+    })
+
+    eventBus.$on('booking-updated', (id) => {
+      let index = this.bookings.findIndex(booking => booking._id === id)
+      this.bookings[index].status = true
     })
 
   },
