@@ -5,16 +5,16 @@ db.bookings.insertMany([
     {
         name: "Thor",
         email: "LordOfThunder@avengersmail.com",
-        status: null
+        status: true
     },
     {
         name: "Tony Stark",
         email: "IronMan@avengersmail.com",
-        status: null
+        status: false
     },
     {
         name: "Bruce Banner",
         email: "hulk_smash@avengersmail.com",
-        status: null
+        status: false
     },
 ]);
