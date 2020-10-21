@@ -33,8 +33,8 @@ const createRouter = function (collection) {
   
     // CREATE
     router.post('/', (req, res) => {
-      const newBird = req.body
-      collection.insertOne(newBird)
+      const newBooking = req.body
+      collection.insertOne(newBooking)
       .then((result) => res.json(result.ops[0]))
       .catch((err) => {
         console.error(err)
@@ -46,10 +46,10 @@ const createRouter = function (collection) {
     // UPDATE
     router.put('/:id', (req, res) => {
       const id = req.params.id
-      const updatedBird = req.body
+      const updatedBooking = req.body
       collection.findOneAndUpdate(
         { _id: ObjectID(id)},
-        { $set: updatedBird},
+        { $set: updatedBooking},
         {returnOriginal: false}
       )
       .then((result) => res.json(result.value))
